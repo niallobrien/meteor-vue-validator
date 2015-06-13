@@ -6,7 +6,7 @@ Package.describe({
 });
 
 Package.onUse(function (api) {
-  api.use('vue:vue', 'client');
+  api.use('vue:vue@0.11.10', 'client');
   api.addFiles('vue-validator.js', 'client');
   api.export('validator', 'client')
 });
