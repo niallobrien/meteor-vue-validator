@@ -32,7 +32,7 @@ Template.comment.rendered = function () {
     var vm = new Vue({
     el: '#example',
     data: {
-      comment: ''
+      ...
     },
     methods: {
       ...
@@ -52,7 +52,7 @@ Template.comment.rendered = function () {
 }
 ```
 Once installed, we can use `v-validate` directive in your template.
-Notice that we initialised the `comment` property on the `data` object above.
+Notice that we add `&& comment` to the `v-show` directives so it doesn't initially display. This saves us having to initialise the model in the `data` object.
 
 The following is a template example.
 
@@ -61,8 +61,8 @@ The following is a template example.
   <form id="blog-form">
       <input type="text" v-model="comment" v-validate="minLength: 16, maxLength: 128">
       <div>
-          <span v-show="validation.comment.minLength">Your comment is too short.</span>
-          <span v-show="validation.comment.maxLength">Your comment is too long.</span>
+          <span v-show="validation.comment.minLength && comment">Your comment is too short.</span>
+          <span v-show="validation.comment.maxLength && comment">Your comment is too long.</span>
       </div>
       <input type="submit" value="send" v-if="valid">
   </form>
